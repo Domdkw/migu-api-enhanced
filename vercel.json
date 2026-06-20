@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "src/adapters/vercel.ts",
+      "use": "@vercel/edge"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/adapters/vercel.ts"
+    }
+  ]
+}

@@ -1,0 +1,657 @@
+{
+  "info": {
+    "_postman_id": "migu-api-enhanced-collection",
+    "name": "Migu API Enhanced",
+    "description": "咪咕音乐 API 增强版 - 完整的 API 测试集合",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:6200",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "搜索",
+      "item": [
+        {
+          "name": "搜索歌曲",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/search?text=APT.&page=1&size=20",
+              "host": ["{{base_url}}"],
+              "path": ["api", "search"],
+              "query": [
+                {
+                  "key": "text",
+                  "value": "APT.",
+                  "description": "搜索关键词"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "页码，默认为1"
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "description": "每页数量，默认为20"
+                }
+              ]
+            },
+            "description": "搜索歌曲"
+          }
+        },
+        {
+          "name": "综合搜索",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/search/all?text=APT.",
+              "host": ["{{base_url}}"],
+              "path": ["api", "search", "all"],
+              "query": [
+                {
+                  "key": "text",
+                  "value": "APT.",
+                  "description": "搜索关键词"
+                }
+              ]
+            },
+            "description": "综合搜索"
+          }
+        },
+        {
+          "name": "搜索歌手",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/search/singer?text=APT.",
+              "host": ["{{base_url}}"],
+              "path": ["api", "search", "singer"],
+              "query": [
+                {
+                  "key": "text",
+                  "value": "APT.",
+                  "description": "搜索关键词"
+                }
+              ]
+            },
+            "description": "搜索歌手"
+          }
+        },
+        {
+          "name": "搜索专辑",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/search/album?text=lighting&page=1&size=20",
+              "host": ["{{base_url}}"],
+              "path": ["api", "search", "album"],
+              "query": [
+                {
+                  "key": "text",
+                  "value": "lighting",
+                  "description": "搜索关键词"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "页码，默认为1"
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "description": "每页数量，默认为20"
+                }
+              ]
+            },
+            "description": "搜索专辑"
+          }
+        },
+        {
+          "name": "热门搜索",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/search/hot",
+              "host": ["{{base_url}}"],
+              "path": ["api", "search", "hot"]
+            },
+            "description": "获取热门搜索排行"
+          }
+        },
+        {
+          "name": "默认搜索文本",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/search/default?resourceVersion=2",
+              "host": ["{{base_url}}"],
+              "path": ["api", "search", "default"],
+              "query": []
+            },
+            "description": "获取默认搜索文本"
+          }
+        },
+        {
+          "name": "歌手标签",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/search/singerTab",
+              "host": ["{{base_url}}"],
+              "path": ["api", "search", "singerTab"]
+            },
+            "description": "获取歌手标签"
+          }
+        },
+        {
+          "name": "歌手列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/search/singerTab/list?tab=huayu-nan&templateVersion=3",
+              "host": ["{{base_url}}"],
+              "path": ["api", "search", "singerTab", "list"],
+              "query": [
+                {
+                  "key": "tab",
+                  "value": "huayu-nan",
+                  "description": "标签名称"
+                }
+              ]
+            },
+            "description": "获取歌手列表"
+          }
+        }
+      ]
+    },
+    {
+      "name": "歌曲",
+      "item": [
+        {
+          "name": "获取播放地址 v1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/url/v1?contentId=600929000003297424&copyrightId=6005974GS6W&resourceType=2&toneFlag=PQ",
+              "host": ["{{base_url}}"],
+              "path": ["api", "url", "v1"],
+              "query": [
+                {
+                  "key": "contentId",
+                  "value": "600929000003297424",
+                  "description": "内容ID"
+                },
+                {
+                  "key": "copyrightId",
+                  "value": "6005974GS6W",
+                  "description": "版权ID"
+                },
+                {
+                  "key": "resourceType",
+                  "value": "2",
+                  "description": "资源类型"
+                },
+                {
+                  "key": "toneFlag",
+                  "value": "PQ",
+                  "description": "音质标识"
+                }
+              ]
+            },
+            "description": "获取歌曲播放地址 v1"
+          }
+        },
+        {
+          "name": "获取播放地址 v2",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/url/v2?contentId=600929000000900351&copyrightId=6005753G176&netType=01&resourceType=2&toneFlag=PQ",
+              "host": ["{{base_url}}"],
+              "path": ["api", "url", "v2"],
+              "query": [
+                {
+                  "key": "contentId",
+                  "value": "600929000000900351",
+                  "description": "内容ID"
+                },
+                {
+                  "key": "copyrightId",
+                  "value": "6005753G176",
+                  "description": "版权ID"
+                },
+                {
+                  "key": "netType",
+                  "value": "01",
+                  "description": "网络类型"
+                },
+                {
+                  "key": "resourceType",
+                  "value": "2",
+                  "description": "资源类型"
+                },
+                {
+                  "key": "toneFlag",
+                  "value": "PQ",
+                  "description": "音质标识"
+                }
+              ]
+            },
+            "description": "获取歌曲播放地址 v2（带解密）"
+          }
+        },
+        {
+          "name": "检查歌曲是否可听",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contentIds\": \"600902000000173077,600929000000900351,600908000009237414,600929000003297424,600908000008821531,600913000001507123,600913000001807238,600929000005061248,600929000006975781,600929000007337501,600907000008508111,600902000004794155,600913000009244400,600919000007096843,600929000007028132,600902000000466616,600907000009700507,600902000008252323,600902000008174424,600913000007852458\",\n  \"curPlayContentId\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/can-listen",
+              "host": ["{{base_url}}"],
+              "path": ["api", "can-listen"]
+            },
+            "description": "检查歌曲是否可听"
+          }
+        },
+        {
+          "name": "获取播放次数",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/opNum?opType=play&resourceType=2021&ids=233851696,234592877",
+              "host": ["{{base_url}}"],
+              "path": ["api", "opNum"],
+              "query": [
+                {
+                  "key": "opType",
+                  "value": "play",
+                  "description": "操作类型"
+                },
+                {
+                  "key": "resourceType",
+                  "value": "2021",
+                  "description": "资源类型"
+                },
+                {
+                  "key": "ids",
+                  "value": "233851696,234592877",
+                  "description": "资源ID列表，逗号分隔"
+                }
+              ]
+            },
+            "description": "获取指定资源的播放次数"
+          }
+        },
+        {
+          "name": "获取资源信息",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/resourceinfo?resourceId=1131254786|1000002956&resourceType=2002",
+              "host": ["{{base_url}}"],
+              "path": ["api", "resourceinfo"],
+              "query": [
+                {
+                  "key": "resourceId",
+                  "value": "1131254786|1000002956",
+                  "description": "资源ID"
+                },
+                {
+                  "key": "resourceType",
+                  "value": "2002",
+                  "description": "资源类型：2-音乐，2002-作曲家，2003-专辑，2021-歌单"
+                }
+              ]
+            },
+            "description": "获取资源信息"
+          }
+        }
+      ]
+    },
+    {
+      "name": "专辑",
+      "item": [
+        {
+          "name": "获取专辑详情",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/album/info?albumId=1138608258",
+              "host": ["{{base_url}}"],
+              "path": ["api", "album", "info"],
+              "query": [
+                {
+                  "key": "albumId",
+                  "value": "1138608258",
+                  "description": "专辑ID"
+                }
+              ]
+            },
+            "description": "获取专辑详情"
+          }
+        },
+        {
+          "name": "获取专辑歌曲列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/album/song?albumId=1138608258&page=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "album", "song"],
+              "query": [
+                {
+                  "key": "albumId",
+                  "value": "1138608258",
+                  "description": "专辑ID"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "页码"
+                }
+              ]
+            },
+            "description": "获取专辑歌曲列表"
+          }
+        }
+      ]
+    },
+    {
+      "name": "歌手",
+      "item": [
+        {
+          "name": "获取歌手信息",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/singer/index?singerId=953362",
+              "host": ["{{base_url}}"],
+              "path": ["api", "singer", "index"],
+              "query": [
+                {
+                  "key": "singerId",
+                  "value": "953362",
+                  "description": "歌手ID"
+                }
+              ]
+            },
+            "description": "获取歌手信息"
+          }
+        },
+        {
+          "name": "获取歌手歌曲列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/singer/songlist?singerId=953362&page=1&type=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "singer", "songlist"],
+              "query": [
+                {
+                  "key": "singerId",
+                  "value": "953362",
+                  "description": "歌手ID"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "页码"
+                },
+                {
+                  "key": "type",
+                  "value": "1",
+                  "description": "类型"
+                }
+              ]
+            },
+            "description": "获取歌手歌曲列表"
+          }
+        },
+        {
+          "name": "获取歌手专辑列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/singer/album?singerId=953362",
+              "host": ["{{base_url}}"],
+              "path": ["api", "singer", "album"],
+              "query": [
+                {
+                  "key": "singerId",
+                  "value": "953362",
+                  "description": "歌手ID"
+                }
+              ]
+            },
+            "description": "获取歌手专辑列表"
+          }
+        }
+      ]
+    },
+    {
+      "name": "播放列表",
+      "item": [
+        {
+          "name": "获取播放列表信息",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/playlist/info?playlistId=231760782",
+              "host": ["{{base_url}}"],
+              "path": ["api", "playlist", "info"],
+              "query": [
+                {
+                  "key": "playlistId",
+                  "value": "231760782",
+                  "description": "播放列表ID"
+                }
+              ]
+            },
+            "description": "获取播放列表信息"
+          }
+        },
+        {
+          "name": "获取播放列表歌曲",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/playlist/song?playlistId=231760782&page=1&size=50",
+              "host": ["{{base_url}}"],
+              "path": ["api", "playlist", "song"],
+              "query": [
+                {
+                  "key": "playlistId",
+                  "value": "231760782",
+                  "description": "播放列表ID"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "页码，默认为1"
+                },
+                {
+                  "key": "size",
+                  "value": "50",
+                  "description": "每页数量，默认为50"
+                }
+              ]
+            },
+            "description": "获取播放列表歌曲"
+          }
+        }
+      ]
+    },
+    {
+      "name": "排行榜",
+      "item": [
+        {
+          "name": "获取排行榜栏目",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/rank/index",
+              "host": ["{{base_url}}"],
+              "path": ["api", "rank", "index"]
+            },
+            "description": "获取排行榜栏目"
+          }
+        },
+        {
+          "name": "获取排行榜内容",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/rank/info?rankId=27553319&page=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "rank", "info"],
+              "query": [
+                {
+                  "key": "rankId",
+                  "value": "27553319",
+                  "description": "排行榜栏目ID"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "页码"
+                }
+              ]
+            },
+            "description": "获取排行榜栏目内容"
+          }
+        }
+      ]
+    },
+    {
+      "name": "推荐",
+      "item": [
+        {
+          "name": "获取推荐歌曲",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/recommend/song?actionId=1&scene=TODAY_RECOMMEND&size=3",
+              "host": ["{{base_url}}"],
+              "path": ["api", "recommend", "song"],
+              "query": [
+                {
+                  "key": "actionId",
+                  "value": "1",
+                  "description": "动作ID"
+                },
+                {
+                  "key": "scene",
+                  "value": "TODAY_RECOMMEND",
+                  "description": "场景，默认TODAY_RECOMMEND"
+                },
+                {
+                  "key": "size",
+                  "value": "3",
+                  "description": "数量，默认20"
+                }
+              ]
+            },
+            "description": "获取推荐歌曲"
+          }
+        },
+        {
+          "name": "获取推荐播放列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/recommend/playlist?scene=recommend_playlist",
+              "host": ["{{base_url}}"],
+              "path": ["api", "recommend", "playlist"],
+              "query": [
+                {
+                  "key": "scene",
+                  "value": "recommend_playlist",
+                  "description": "场景"
+                }
+              ]
+            },
+            "description": "获取推荐播放列表"
+          }
+        }
+      ]
+    },
+    {
+      "name": "评论",
+      "item": [
+        {
+          "name": "获取评论",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/comment?resourceId=600929000001520013&resourceType=2&hotCommentStart=0&size=20",
+              "host": ["{{base_url}}"],
+              "path": ["api", "comment"],
+              "query": [
+                {
+                  "key": "resourceId",
+                  "value": "600929000001520013",
+                  "description": "资源ID"
+                },
+                {
+                  "key": "resourceType",
+                  "value": "2",
+                  "description": "资源类型：1-歌曲，2-专辑"
+                },
+                {
+                  "key": "hotCommentStart",
+                  "value": "0",
+                  "description": "热门评论起始位置，默认为0"
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "description": "每页数量，默认为20"
+                }
+              ]
+            },
+            "description": "获取评论"
+          }
+        }
+      ]
+    }
+  ]
+}
