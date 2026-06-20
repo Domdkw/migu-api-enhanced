@@ -10,8 +10,9 @@
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
+  // 环境变量配置（生产环境建议在 Cloudflare Dashboard 中配置）
   // "vars": {
-  //   "MY_VAR": "my-variable"
+  //   "ALLOWED_ORIGINS": "https://your-domain.com"
   // },
   // "kv_namespaces": [
   //   {

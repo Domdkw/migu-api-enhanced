@@ -4,19 +4,34 @@ import { logger } from 'hono/logger';
 import { memCache } from 'hono-mem-cache';
 import apiRoutes from './routes/index';
 
-const app = new Hono();
+/**
+ * 环境变量类型定义
+ */
+type EnvBindings = {
+    ALLOWED_ORIGINS?: string;
+};
 
-const ALLOWED_ORIGINS = ['', 'http://localhost:6200']
+const app = new Hono<{ Bindings: EnvBindings }>();
+
+/**
+ * 从环境变量获取允许的源列表
+ * 兼容 Cloudflare Workers、Vercel Edge、Node.js 等多平台
+ */
+const getAllowedOrigins = (env: EnvBindings): string[] => {
+    const origins = env.ALLOWED_ORIGINS || '';
+    return origins.split(',').map(origin => origin.trim()).filter(Boolean);
+};
 
 // 全局中间件
 app.use('*', logger());
 
 app.use('*', cors({
-    origin: (origin) => {
-        if (ALLOWED_ORIGINS.includes(origin)) {
-            return origin
+    origin: (origin: string, c) => {
+        const allowedOrigins = getAllowedOrigins(c.env);
+        if (allowedOrigins.includes(origin)) {
+            return origin;
         }
-        return 'localhost'
+        return allowedOrigins[0] || 'localhost';
     },
     allowMethods: ['GET', 'OPTIONS'],
 }));

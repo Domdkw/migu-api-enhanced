@@ -2,7 +2,7 @@
   "name": "migu-api-enhanced",
   "type": "module",
   "scripts": {
-    "dev": "npx tsx src/adapters/node.ts",
+    "dev": "npx tsx --env-file=.env src/adapters/node.ts",
     "dev:cf": "wrangler dev",
     "dev:deno": "deno run --allow-net --allow-read src/adapters/deno.ts",
     "deploy:cf": "wrangler deploy --minify",
