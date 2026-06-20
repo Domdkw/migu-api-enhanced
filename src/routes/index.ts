@@ -26,6 +26,9 @@ import singerIndex from './singer_index';
 import singerSong from './singer_song';
 import urlV1 from './url_v1';
 import urlV2 from './url_v2';
+import version from './version';
+
+
 
 /**
  * API 路由聚合
@@ -60,6 +63,7 @@ const routeModules = [
     singerSong,
     urlV1,
     urlV2,
+    version,
 ];
 
 // 遍历并注册所有路由

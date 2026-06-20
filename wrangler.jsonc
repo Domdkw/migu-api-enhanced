@@ -1,7 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "migu-api-enhanced",
-  "main": "src/index.ts",
+  "main": "src/adapters/cloudflare-workers.ts",
+  "dev": {
+    "port": 6200,
+    "ip": "0.0.0.0"
+  },
   "compatibility_date": "2026-06-20"
   // "compatibility_flags": [
   //   "nodejs_compat"

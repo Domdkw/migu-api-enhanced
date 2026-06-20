@@ -8,23 +8,17 @@ export default function (app: Hono) {
      * @param body - JSON 字符串，包含歌曲 ID
      */
     app.post('/can-listen', async (c) => {
-        try{
-        const formData = await c.req.formData();
-
-        if (!formData.has('body')) {
-            return c.json({
-                success: false,
-                error: '缺少 body 参数'
-            }, 400);
-        }
-
-        const json = formData.get('body') as string;
+        try {
+        const body = await c.req.json();
 
         const data = await h5fetch(
             `https://app.c.nf.migu.cn/strategy/pc/can-listen/v1.0`
         ,{
             method: 'post',
-            body: JSON.parse(json)
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
         });
         return c.json({
             success: true,

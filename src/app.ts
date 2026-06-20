@@ -10,6 +10,7 @@ const ALLOWED_ORIGINS = ['', 'http://localhost:6200']
 
 // 全局中间件
 app.use('*', logger());
+
 app.use('*', cors({
     origin: (origin) => {
         if (ALLOWED_ORIGINS.includes(origin)) {

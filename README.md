@@ -4,13 +4,12 @@
 
 ## 技术栈
 
-![Hono](https://img.shields.io/badge/Hono-4.x-orange)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
-![Node.js](https://img.shields.io/badge/Node.js-18+-green)
-![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-orange)
-![Deno](https://img.shields.io/badge/Deno-supported-black)
-![Vercel](https://img.shields.io/badge/Vercel-supported-black)
-
+![Hono](https://img.shields.io/badge/Hono-4.x-E36002?logo=hono&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)
+![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white)
+![Deno](https://img.shields.io/badge/Deno-000000?logo=deno&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
 ## 特性
 
 - 基于 Hono 框架，轻量高性能
