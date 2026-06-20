@@ -15,7 +15,7 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Domdkw/migu-api-enhanced)
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Domdkw/migu-api-enhanced)
-[![使用 EdgeOne Pages 部署](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://console.cloud.tencent.com/edgeone/pages/new?template=hono)
+[![使用 EdgeOne Pages 部署](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?repository-url=https://github.com/Domdkw/migu-api-enhanced)
 [![Deploy on Deno](https://deno.com/button)](https://console.deno.com/new?clone=https://github.com/Domdkw/migu-api-enhanced)
 
 ## 特性
