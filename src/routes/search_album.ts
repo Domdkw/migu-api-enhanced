@@ -7,12 +7,14 @@ export default function (app: Hono) {
      * 搜索专辑
      * @param text - 搜索关键词
      * @param page - 页码，默认为1
+     * @param typeOrder - 排序类型
      */
     app.get('/search/album', async (c) => {
         const text = c.req.query('text') ?? '';
         const page = c.req.query('page') ?? 1;
+        const typeOrder = c.req.query('typeOrder') ?? 0;
 
-        const data = await h5fetch(`https://app.u.nf.migu.cn/pc/bmw/album/search/v1.0?text=${text}&pageNo=${page}`);
+        const data = await h5fetch(`http://app.c.nf.migu.cn/bmw/search/album/v1.0?pageNo=${page}&text=${text}&typeOrder=${typeOrder}`);
         return c.json({
             success: true,
             data
