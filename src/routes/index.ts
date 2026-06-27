@@ -6,7 +6,11 @@ import searchArtist from './search_singer';
 import searchAlbum from './search_album';
 import searchHot from './search_hot';
 import searchDefault from './search_default';
-import searchAll from './search_all';
+import searchVideo from './search_video';
+import searchSuggest from './search_suggest';
+import searchRbt from './search_rbt';
+import searchTicket from './search_ticket';
+import searchConcert from './search_concert';
 import albumInfo from './album_info';
 import albumSong from './album_song';
 import canListen from './can-listen';
@@ -44,7 +48,11 @@ const routeModules = [
     searchAlbum,
     searchHot,
     searchDefault,
-    searchAll,
+    searchVideo,
+    searchSuggest,
+    searchRbt,
+    searchTicket,
+    searchConcert,
     searchSingerTab,
     searchSingerTabList,
     albumInfo,

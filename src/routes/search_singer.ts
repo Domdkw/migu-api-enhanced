@@ -9,8 +9,9 @@ export default function (app: Hono) {
      */
     app.get('/search/singer', async (c) => {
         const text = c.req.query('text') ?? '';
+        const page = c.req.query('page') ?? 1;
 
-        const data = await h5fetch(`https://app.u.nf.migu.cn/pc/resource/search/singer/v1.0?text=${text}`);
+        const data = await h5fetch(`http://app.c.nf.migu.cn/bmw/search/singer/v2.0?pageNo=${page}&text=${text}`);
         return c.json({
             success: true,
             data
