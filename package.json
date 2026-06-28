@@ -19,6 +19,14 @@
     "LICENSE"
   ],
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Domdkw/migu-api-enhanced.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Domdkw/migu-api-enhanced/issues"
+  },
+  "homepage": "https://github.com/Domdkw/migu-api-enhanced#readme",
   "engines": {
     "node": ">=18"
   },
