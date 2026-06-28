@@ -1,15 +1,41 @@
 {
   "name": "migu-api-enhanced",
+  "version": "1.2.0",
+  "description": "咪咕音乐 API 增强 SDK（多平台部署 + NPM 包）",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "npx tsx --env-file=.env src/adapters/node.ts",
     "dev:cf": "wrangler dev",
     "dev:deno": "deno run --allow-net --allow-read src/adapters/deno.ts",
+    "build": "tsup",
+    "build:node": "node build-node.mjs",
+    "typecheck": "tsc --project tsconfig.sdk.json",
     "build:edgeone": "esbuild functions/[[default]].ts --bundle --platform=browser --target=es2022 --format=esm --outfile=functions/[[default]].js",
+    "start": "node dist-server/index.js",
     "deploy:cf": "wrangler deploy --minify",
     "deploy:vercel": "vercel --prod",
     "deploy:deno": "deno run --allow-net --allow-read src/adapters/deno.ts",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
     "hono": "^4.12.23",
@@ -17,8 +43,11 @@
   },
   "devDependencies": {
     "@hono/node-server": "^1.13.7",
+    "@types/node": "^26.0.1",
     "esbuild": "^0.25.0",
+    "tsup": "^8.5.1",
     "tsx": "^4.19.2",
+    "typescript": "^5.0.0",
     "wrangler": "^4.4.0"
   }
 }

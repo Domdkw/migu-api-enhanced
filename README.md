@@ -32,10 +32,16 @@
 migu-api-enhanced/
 ├── src/
 │   ├── adapters/      # 平台适配器
-│   ├── routes/        # API 路由
+│   ├── modules/       # API 模块（NPM 包导出）
+│   ├── routers/       # API 路由
 │   ├── types/         # 类型定义
-│   └── utils/         # 工具函数
-├── postman/           # Postman 集合
+│   ├── utils/         # 工具函数
+│   ├── app.ts         # 应用入口
+│   └── index.ts       # NPM 包入口
+├── functions/         # EdgeOne 边缘函数
+├── tsconfig.json      # TypeScript 基础配置
+├── tsconfig.sdk.json  # SDK 类型检查配置
+├── tsup.config.ts     # tsup 构建配置
 └── package.json
 ```
 
@@ -60,9 +66,27 @@ pnpm run dev:cf
 pnpm run dev:deno
 ```
 
+### 构建与类型检查
+
+```bash
+# 构建 NPM 包（使用 tsup）
+pnpm run build
+
+# 类型检查（SDK/NPM 包）
+pnpm run typecheck
+
+# 构建 EdgeOne 边缘函数
+pnpm run build:edgeone
+```
+
 ### 部署
 
 ```bash
+# Node.js 生产部署（构建 + 启动）
+pnpm run build:node  # 编译
+pnpm start           # 启动
+# 以后直接运行 pnpm start 即可，无需重新构建
+
 # Cloudflare Workers
 pnpm run deploy:cf
 
@@ -71,6 +95,19 @@ pnpm run deploy:vercel
 
 # Deno
 pnpm run deploy:deno
+```
+
+### 环境变量
+
+服务端部署时可通过环境变量配置：
+
+| 变量名 | 说明 | 示例 |
+| ------ | ---- | ---- |
+| `ALLOWED_ORIGINS` | CORS 允许的源（逗号分隔） | `https://example.com,https://api.example.com` |
+
+```bash
+# Node.js 启动时设置环境变量
+ALLOWED_ORIGINS=https://example.com pnpm start
 ```
 
 ## API 接口
@@ -151,6 +188,74 @@ pnpm run deploy:deno
 | 接口路径 | 方法 | 说明 | 参数 |
 | -------- | ---- | ---- | ---- |
 | `/version` | GET | 安装包信息 | `channel`(渠道), `version`(版本), `ua`(用户代理) |
+
+## TypeScript 配置
+
+本项目使用 TypeScript 5.x，配置分为两部分：
+
+| 配置文件 | 用途 |
+| -------- | ---- |
+| `tsconfig.json` | 基础配置，定义编译选项 |
+| `tsconfig.sdk.json` | SDK/NPM 包类型检查，排除应用层代码 |
+
+### 多平台部署说明
+
+各平台部署使用不同的构建工具：
+
+| 平台 | 部署方式 | 构建工具 |
+| ---- | -------- | -------- |
+| Node.js | `pnpm run deploy:node` | esbuild |
+| Node.js | `tsx` 直接运行 | 无需编译 |
+| Cloudflare Workers | `wrangler deploy` | wrangler 内置 |
+| Vercel | `vercel --prod` | Vercel 内置 |
+| Deno | `deno run` | 无需编译 |
+| EdgeOne | `esbuild` | esbuild |
+| NPM 包 | `tsup` | tsup |
+
+## 作为 NPM 包使用
+
+本仓库的 `src/modules/` 同时被打包为可独立发布的 NPM 包 `migu-api-enhanced`，
+支持 ESM + CJS 双格式，并附带 TypeScript 类型声明。
+
+### 安装
+
+```bash
+pnpm add migu-api-enhanced
+# 或
+npm install migu-api-enhanced
+```
+
+### 方式一：`createClient` 工厂（推荐，支持自定义配置）
+
+```ts
+import { createClient } from 'migu-api-enhanced';
+
+const migu = createClient({ timeout: 10000 });
+
+// 搜索歌曲
+const data = await migu.searchSong('周杰伦', 1);
+console.log(data);
+
+// 获取专辑详情
+const album = await migu.getAlbumInfo('1123');
+console.log(album);
+```
+
+### 方式二：命名导入（开箱即用，默认 5 秒超时）
+
+```ts
+import { getAlbumInfo, getUrlV2 } from 'migu-api-enhanced';
+
+const album = await getAlbumInfo('1123');
+const urlInfo = await getUrlV2('contentId', 'copyrightId');
+```
+
+### 构建
+
+```bash
+pnpm run build
+# 产物输出到 dist/：index.js（ESM）+ index.cjs（CJS）+ index.d.ts（类型声明）
+```
 
 ## 许可证
 

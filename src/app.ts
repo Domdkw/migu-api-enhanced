@@ -2,7 +2,7 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import { memCache } from 'hono-mem-cache';
-import apiRoutes from './routes/index';
+import apiRoutes from './routers';
 
 /**
  * 环境变量类型定义
